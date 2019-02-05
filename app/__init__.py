@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 # Setting up Configuration
 app.config.from_object(DevConfig)
+app.config.from_pyfile('config.py')
 
 
 

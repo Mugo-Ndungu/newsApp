@@ -1,14 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% if title %}
-    <title>{{title}}</title>
-    {% else %}
-    <title>Home - Welcome to the best News App Online</title>
-    {% endif %}
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+
+
+{% block Content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 categories">
+            <h2>General News</h2>
+        </div>
+        {{macro.newsCategories(general)}}
+    </div>
+    <hr>
+    <div class="row" id="business">
+        <div class="col-md-12 categories">
+            <h2>Business News</h2>
+        </div>
+        {{macro.newsCategories(business)}}
+    </div>
+    <div class="row" id="entertainment">
+        <div class="col-md-12 categories">
+            <h2>Business News</h2>
+        </div>
+        {{macro.newsCategories(business)}}
+    </div>
+    <div class="row" id="sports">
+        <div class="col-md-12 categories">
+            <h2>Business News</h2>
+        </div>
+        {{macro.newsCategories(business)}}
+    </div>
+</div>
+
+{% endblock Content %}

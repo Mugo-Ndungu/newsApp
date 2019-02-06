@@ -24,7 +24,7 @@ def index():
 @app.route('/articles/<news_id>&<int:per_page>')
 def articles(news_id,per_page):
     '''
-    Function that returns articles based on their newss
+    Function that returns articles based on their news
     '''
     # print(news_id)
     # per_page = 40

@@ -17,10 +17,10 @@ Click [here](https://newzappz.herokuapp.com/) to see the live site
 
 | Behavior            | Input                         | Output                        |
 | ------------------- | ----------------------------- | ----------------------------- |
-| View Business sources | Click on the BUSINESS button | Scrolls the page to the BUSINESS section |
+| View GENERAL sources | Click on the GENERAL button | Scrolls the page to the GENERAL section |
 | View Entertainment sources | Click on the ENTERTAINMENT button | Scrolls the page to the ENTERTAINMENT section |
 | View Sports sources | Click on the SPORTS button | Scrolls the page to the SPORTS section |
-| View Top Headlines Articles | Click on the Top Headlines button | Redirects to a page that displays articles on Top Headlines |
+| View BUSINESS | Click on the BUSINESS button | Redirects to a page that displays articles on BUSINESS |
 
 
 ## Prerequisites

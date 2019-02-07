@@ -1,5 +1,5 @@
 import unittest
-from .models import news
+from app.models import news
 News = news.News
 
 class NewsTest(unittest.TestCase):
@@ -22,7 +22,3 @@ class NewsTest(unittest.TestCase):
         self.assertEquals(self.new_news.url,'https://google.com')
         self.assertEquals(self.new_news.urlToImage,'https://google.com/images')
         self.assertEquals(self.new_news.publishedAt,'2018-05-12T13:31:03Z')
-
-
-if __name__ == '__main__':
-    unittest.main()

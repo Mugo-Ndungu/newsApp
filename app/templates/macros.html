@@ -1,19 +1,21 @@
-{% macro newsCategories(categories) %}
-{%for category in categories%}
-<div class="col-md-3 single-news">
-    <div class="row">
-        <div class="col-md-4 news-name">
-            <h3> {{category.name}} </h3>
-        </div>
-        <div class="col-md-7 news-details">
-            <p> {{category.description|truncate(150)}}
-                <br>
+
+{% macro sourceCategories(categories) %}
+{% for category in categories %}
+
+    <div class="col-md-3 single-source">
+        <div class="card-deck">
+            <div class="w3-card-4 page-header w3-container w3-blue">
+                <h3> {{category.name}} </h3>
+            </div>
+            <div class="w3-container">
+                <p> {{category.description|truncate(150)}}
+                </p>
+            </div>
+            <footer class="w3-container w3-blue">
                 <a href="/articles/{{category.id}}&40">Read Articles</a>
-            </p>
+            </footer>
         </div>
     </div>
-</div>
+
 {% endfor %}
 {% endmacro %}
-{% macro addMore() %}
-{% endmacro%}

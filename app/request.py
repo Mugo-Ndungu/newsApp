@@ -6,7 +6,7 @@ from datetime import datetime
 News = news.News
 
 api_key = app.config['NEWS_API_KEY']
-news_url = app.config['NEWS_API_BASE_URL']
+base_url = app.config['NEWS_API_BASE_URL']
 articles_url = app.config['EVERYTHING_SOURCE_BASE_URL']
 
 
@@ -16,48 +16,42 @@ def configure_request(app):
     news_url = app.config['NEWS_API_BASE_URL']
     articles_url = app.config['EVERYTHING_SOURCE_BASE_URL']
 
-
 def get_news(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = news_url.format(category,api_key)
-    with urllib.request.urlopen(get_news_url) as url:
-        get_news_data = url.read()
-        get_news_response = json.loads(get_news_data)
-        news_results = None
-        if get_news_response['sources']:
-            news_results_list = get_news_response['sources']
-            sources_results = process_results(news_results_list)
+    get_sources_url = base_url.format(category,api_key)
 
-    return news_results
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data = url.read()
+        get_sources_response = json.loads(get_sources_data)
 
+        sources_results = None
 
-def process_results(news_list):
+        if get_sources_response['sources']:
+            sources_results = process_results(get_sources_response['sources'])
+    
+    return sources_results
+
+def process_results(sources_list):
     '''
-    Function that processes the news results and tranforms them into a list of objects
-
-    Args:
-        news_list: A list of dictionaries that contain news details
-
-    Returns:
-        new_results: A list of news objects
+    Function that processes the json results
     '''
-    source_results = []
-    for news_item in news_list:
-        id = news_item.get('id')
-        name = news_item.get('name')
-        description = news_item.get('description')
-        url = news_item.get('url')
-        category = news_item.get('category')
-        country = news_item.get('country')
+    sources_results = []
+
+    for source in sources_list:
+        id = source.get('id')
+        name = source.get('name')
+        description = source.get('description')
+        url = source.get('url')
+        category = source.get('category')
+        country = source.get('country')
 
         if url:
-            news_object = News(id,name,description,url,category,country)
-            source_results.append(news_object)
-
-    return source_results
-
+            source_object = News(id,name,description,url,category,country)
+            sources_results.append(source_object)
+    
+    return sources_results
 
 def get_articles(source_id,limit):
     '''
@@ -73,6 +67,7 @@ def get_articles(source_id,limit):
 
         if articles_location_response['articles']:
             articles_location_results = process_articles(articles_location_response['articles'])
+        
     return articles_location_results
 
 def process_articles(my_articles):
@@ -80,6 +75,7 @@ def process_articles(my_articles):
     Function that processes the json results for the articles
     '''
     article_location_list = []
+    
     for article in my_articles:
         author = article.get('author')
         title = article.get('title')
@@ -93,4 +89,5 @@ def process_articles(my_articles):
         if urlToImage:
             article_source_object = Articles(author,title,description,url,urlToImage,publishedAt)
             article_location_list.append(article_source_object)
+        
     return article_location_list

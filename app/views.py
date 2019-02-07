@@ -16,18 +16,16 @@ def index():
     news_science = get_news('science')
     news_health = get_news('health')
 
-    title = 'Home - Welcome to the best News App Online'
+    title = 'Home | Best News Update Site'
 
-    return render_template('index.html', title = title,general=news_general, business = news_business, entertainment = news_entertainment, sports = news_sports, tech = news_tech, science = news_science, health = news_health)
+    return render_template('index.html',title=title, general=news_general, business = news_business, entertainment = news_entertainment, sports = news_sports, tech = news_tech, science = news_science, health = news_health)
 
-
-@app.route('/articles/<news_id>&<int:per_page>')
-def articles(news_id,per_page):
+@app.route('/articles/<source_id>&<int:per_page>')
+def articles(source_id,per_page):
     '''
-    Function that returns articles based on their news
+    Function that returns articles based on their sources
     '''
-    # print(news_id)
-    # per_page = 40
-    news_news = get_articles(news_id,per_page)
-    title = f'{news_id} | All Articles'
-    return render_template('articles.html', title = title, name = news_id, news = news_news)
+
+    news_source = get_articles(source_id,per_page)
+    title = f'{source_id} | All Articles'
+    return render_template('articles.html', title = title, name = source_id, news = news_source)

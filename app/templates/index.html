@@ -1,34 +1,39 @@
-{% extends 'base.html' %}
-{% import 'macros.html' as macro%}
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
 
-
-{% block Content %}
+{% block content%}
 <div class="container">
+    <div class="row container-fluid" id="top">
+        <div class="col-md-12 jumbotron jumbotron-fluid">
+            <h1 class="text-center">News Highlights</h1>
+        </div>
+    </div>
+    <hr>
     <div class="row">
         <div class="col-md-12 categories">
-            <h2>General News</h2>
+            <h2 class="text-center">General News</h2>
         </div>
-        {{macro.newsCategories(general)}}
+        {{macro.sourceCategories(general)}}
     </div>
     <hr>
     <div class="row" id="business">
         <div class="col-md-12 categories">
-            <h2>Business News</h2>
+            <h2 class="text-center" >Business News</h2>
         </div>
-        {{macro.newsCategories(business)}}
+        {{macro.sourceCategories(business)}}
     </div>
+    <hr>
     <div class="row" id="entertainment">
         <div class="col-md-12 categories">
-            <h2>Business News</h2>
+            <h2 class="text-center">Entertainment News</h2>
         </div>
-        {{macro.newsCategories(business)}}
+        {{macro.sourceCategories(entertainment)}}
     </div>
+    <hr>
     <div class="row" id="sports">
         <div class="col-md-12 categories">
-            <h2>Business News</h2>
+            <h2 class="text-center">Sports News</h2>
         </div>
-        {{macro.newsCategories(business)}}
+        {{macro.sourceCategories(sports)}}
     </div>
-</div>
-
-{% endblock Content %}
+{% endblock%}

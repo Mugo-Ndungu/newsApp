@@ -11,7 +11,7 @@
 News App is a web application that is meant to catch up people on current affairs happening all over the world.
 The website has the home page, that has a list of all sources of news sorted in categories.
 A user will have to click on `Read More` on a specific source to view articles on the site
-Click [here](https://newsApp.herokuapp.com/) to see the live site
+Click [here](https://newzappz.herokuapp.com/) to see the live site
 
 ## Specifications
 
